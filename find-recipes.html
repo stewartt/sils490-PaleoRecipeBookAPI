@@ -1,18 +1,7 @@
 <!--representation: a list of all recipe titles-->
 <html>
 	<div id="find-recipes">
-		
-		<ol>
-			<li class="navigation">
-				<a href="/category" rel="category-page">category page</a>
-			</li>
-			<li class="navigation">
-				<a href="/type" rel="type-page">type page</a>
-			</li>
-			<li class="navigation">
-				<a href="/title" rel="title-page">title page</a>
-			</li>
-			<ul class="all">
+			<ul class="titles">
 				<li>
 					<span class="recipe-text">Recipe1</span>
 						<a rel="category" href="/category1/type1/title1" title="category of Recipe1">category1</a>
@@ -27,13 +16,10 @@
 						<a rel="title" href="/categoryN/typeN/titleN" title="title of RecipeN">titleN</a>
 				</li>
 			</ul>
-		</ol>
 		
 		<!--query a title; get a single recipe-->
-		<form id="search-title" method="get" action="/{category}/{type}/{title}" class="recipe-search">
+		<form name="search-title" method="get" action="/title" class="all">
 			<input type="text" name="search-title" value="title" required="true"/>
-			<input type="text" name="search-categor" value="category" required="false"/>
-			<input type="text" name="search-typ" value="type" required="false"/>
 			<input type="submit"/>
 		</form>
 		

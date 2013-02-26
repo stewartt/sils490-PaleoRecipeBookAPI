@@ -4,27 +4,26 @@
 		
 		<ol 
 			<li class="navigation">
-				<a href="/title" rel="list-titles">title page</a>
+				<a href="/title" rel="title-page">title page</a>
 			</li>
 			<li class="navigation">
-				<a href="/category" rel="list-categories">category page</a>
+				<a href="/category" rel="categories-page">category page</a>
 			</li>
-			<ul class="all">
+			<ul class="types">
 				<li>
-					<span class "type-text">Type1</span>
+					<span class="type-text">Type1</span>
 						<a rel="title" href="/typesearch?type=Type1" title="titles for Type1">title</a>
 				</li>
 				...
 				<li>
-					<span class "type-text">TypeN</span>
+					<span class="type-text">TypeN</span>
 						<a rel="title" href="/typesearch?type=TypeN" title="titles for TypeN">title</a>
 				</li>
 			</ul>
 		</ol>
 		
 		<!--get all recipe types-->
-		<form name="all-recipe-types" method="get" action="/type" class="all-types">
-			<input type="text" name="search" value="type" required="true"/>
+		<form name="all-recipe-types" method="get" action="/type" class="all">
 			<input type="submit" value="Send"/>
 		</form>
 

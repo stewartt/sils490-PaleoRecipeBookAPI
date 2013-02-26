@@ -9,7 +9,7 @@
 			<li class="navigation">
 				<a href="/type" rel="type-page">type page</a>
 			</li>
-			<ul class="all">
+			<ul class="titles">
 				<li>
 					<span class="recipe-text">Recipe1</span>
 						<a rel="category" href="/category1/type1/title1" title="category of Recipe1">category1</a>
@@ -27,18 +27,18 @@
 		</ol>
 		
 		<!--get all recipe titles-->
-		<form id="all-recipe titles" method="get" action="/title" class="all">
+		<form name="all-recipe-titles" method="get" action="/title" class="all">
 			<input type="submit" value="Send"/>
 		</form>
 		
 		<!--create a new recipe-->
-		<form id="add-recipe" method="post" action="/title">
-			<input type="text" name="Title" value="" required="true"/>
-			<input type="text" name="Ingredients" value=""required="true"/>
-			<input type="text" name="Prep Instructions" value=""required="true"/>
-			<input type="text" name="Cooking Instructions" value=""required="true"/>
-			<input type="text" name="Category" value=""required="true"/>
-			<input type="text" name="Type" value=""required="true"/>
+		<form name="add-recipe" method="post" action="/title">
+			<input type="text" name="title" value="" required="true"/>
+			<input type="text" name="ingredients" value=""required="true"/>
+			<input type="text" name="prep instructions" value=""required="true"/>
+			<input type="text" name="cooking instructions" value=""required="true"/>
+			<input type="text" name="category" value=""required="true"/>
+			<input type="text" name="type" value=""required="true"/>
 			<input type="submit" value="send"/>
 		</form>
 
