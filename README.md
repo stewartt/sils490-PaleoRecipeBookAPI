@@ -1,7 +1,7 @@
 sils490-PaleoRecipeBookAPI
 ==========================
-
-Homework Assignment 4: Designing a Hypermedia Type: Paleo Recipe Book
+**
+Homework Assignment 4: Designing a Hypermedia Type: Paleo Recipe Book**
 
 ----------
 This information (web) service handles Paleo Recipes that are, by definition “Paleo”, as its primary resources. These recipes do not contain grains, dairy, processed sugar/preservatives, corn or corn byproducts, legumes, or white/starchy potatoes, and only contain fruits, vegetables, meats, and natural sugars. 
@@ -18,3 +18,17 @@ The following labels define examples of items that would be instances of each re
 
 ----------
 
+##**Attribut values: id, class, rel, name**
+
+**id attribute values:**
+
+
+**class attribute values:**
+
+
+**rel attribute values:**
+
+
+**name attribut values:**
+
+ 
