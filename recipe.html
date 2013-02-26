@@ -1,6 +1,36 @@
 <!--a single recipe representation-->
 <html>
 <div id="recipes">
-<ul class="single">
-<li>
-< 
+	<ul class="single">
+		<li>
+			<a rel="category" href="" title="category of Recipe1">
+				<span class="recipe-text">Recipe One Category</span>
+			</a>
+			<a rel="type" href="" title="type of Recipe1">
+				<span class="recipe-text">Recipe One Type</span>
+			</a>
+			<a rel="title" href="/{category}/{type}/{title}" title="title for Recipe1">
+				<span class="recipe-text">Recipe One Title</span>
+			</a>
+			<a rel="ingredients" href="" title="ingredients of Recipe1">
+				<span class="recipe-text">Recipe One Ingredients</span>
+			</a>
+			<a rel="prep instructions" href="" title="prep instructions of Recipe1">
+				<span class="recipe-text">Recipe One Prep Instructions</span>
+			</a>
+			<a rel="cook instructions" href="" title="cook instructions of Recipe1">
+				<span class="recipe-text">Recipe One Cooking Instructions</span>
+			</a>
+			<a rel="comments" href="" title="comment of Recipe1">
+				<span class="recipe-text">Recipe One Comments</span>
+			</a>
+		</li>
+	</ul>
+	
+	<!--add comments-->
+	<form id="add-recipe" method="post" action="/{category}/{type}/{title}" class="add-comment">
+		<input type="text" name="title" value="" required="true"/>
+		<input type="text" name="comment" value=""required="true"/>
+		<input type="submit" value="Send"/>
+	</form>
+	
