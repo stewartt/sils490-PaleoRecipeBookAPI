@@ -1,0 +1,32 @@
+<!--a list of all recipes-->
+<html>
+<div id="recipes">
+<ul class="all">
+<li>
+<span class "recipe-text">Recipe1</span>
+<a rel="title" href="..." title="title for Recipe1">title</a>
+<a rel="category" href "..." title="category of Recipe1">category</a>
+<a rel="type" href "..." title="type of Recipe1">type</a>
+</li>
+...
+<li>
+<span class "recipe-text">RecipeN</span>
+<a rel="title" href="..." title="RecipeN">title</a>
+<a rel="category" href "..." title="category of RecipeN">category</a>
+<a rel="type" href "..." title="type of RecipeN">type</a>
+</li>
+</ul>
+
+
+<form id="add-recipe" method="post" action="/title">
+  <input type="text" name="Title" value="" required="true"/>
+  <input type="text" name="Ingredients" value=""required="true"/>
+  <input type="text" name="Prep Instructions" value=""required="true"/>
+  <input type="text" name="Cooking Instructions" value=""required="true"/>
+  <input type="text" name="Category" value=""required="true"/>
+  <input type="text" name="Type" value=""required="true"/>
+  <input type="submit"/>
+</form>
+
+</div>
+</html>
