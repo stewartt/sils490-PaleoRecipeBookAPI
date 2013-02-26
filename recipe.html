@@ -14,6 +14,12 @@
 		</li>
 	</ul>
 	
+	<!--get recipe -->
+		<form name="recipe" method="get" action="/{category}/{type}/{title}" class="recipe">
+			<textarea name="search" value="recipe" required="true"/>
+			<input type="submit" value="Send"/>
+		</form>
+		
 	<!--add comments-->
 	<form method="post" action="/{category}/{type}/{title}" class="add-comment">
 		<textarea name="comment"></textarea>
@@ -21,5 +27,7 @@
 	</form>
 	
 	<!--remove a recipe-->
-	
+	<script type="text/javascript">
+	function delete(id){}
+	</script>
 	
