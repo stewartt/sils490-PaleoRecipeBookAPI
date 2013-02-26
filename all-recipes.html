@@ -1,46 +1,38 @@
-<!--representation: a list of all recipes by title-->
+<!--representation: a list of all recipe titles-->
 <html>
-	<div id="/title">
+	<div id="all-recipes">
 		
 		<ol>
 			<li class="navigation">
-				<a href="..." rel="next-page">next page</a>
+				<a href="/category" rel="category-page">category page</a>
 			</li>
 			<li class="navigation">
-				<a href="..." rel="last-page">last page</a>
+				<a href="/type" rel="type-page">type page</a>
 			</li>
 			<ul class="all">
 				<li>
-					<span class "recipe-text">Recipe1</span>
-						<a rel="category" href="" title="category of Recipe1">category</a>
-						<a rel="type" href="" title="type of Recipe1">type</a>
-						<a rel="title" href="/{category}/{type}/{title}" title="title for Recipe1">title</a>
-						<a rel="ingredients" href="" title="ingredients of Recipe1">type</a>
-						<a rel="prep instructions" href="" title="prep instructions of Recipe1">type</a>
-						<a rel="cooking instructions" href="" title="cook instructions of Recipe1">type</a>
-						<a rel="comments" href="" title="comment of Recipe1">comment</a>
+					<span class="recipe-text">Recipe1</span>
+						<a rel="category" href="/category1/type1/title1" title="category of Recipe1">category1</a>
+						<a rel="type" href="/category1/type1/title1" title="type of Recipe1">type1</a>
+						<a rel="title" href="/category1/type1/title1" title="title of Recipe1">title1</a>
 				</li>
 				...
 				<li>
-					<span class "recipe-text">RecipeN</span>
-						<a rel="category" href="" title="category of RecipeN">category</a>
-						<a rel="type" href="" title="type of RecipeN">type</a>
-						<a rel="title" href="/{category}/{type}/{title}" title="RecipeN">title</a>
-						<a rel="ingredients" href="" title="ingredients of RecipeN">type</a>
-						<a rel="prep instructions" href="" title="prep instructions of RecipeN">type</a>
-						<a rel="cooking instructions" href="" title="cook instructions of RecipeN">type</a>
-						<a rel="comments" href="" title="comment of RecipeN">comment</a>
+					<span class="recipe-text">RecipeN</span>
+						<a rel="category" href="/categoryN/typeN/titleN" title="category of RecipeN">categoryN</a>
+						<a rel="type" href="/categoryN/typeN/titleN" title="type of RecipeN">typeN</a>
+						<a rel="title" href="/categoryN/typeN/titleN" title="title of RecipeN">titleN</a>
 				</li>
 			</ul>
 		</ol>
 		
 		<!--get all recipe titles-->
-		<form id="all-recipes" method="get" action="/title" class="all">
+		<form id="all-recipe titles" method="get" action="/title" class="all">
 			<input type="submit" value="Send"/>
 		</form>
 		
 		<!--create a new recipe-->
-		<form id="add-recipe" method="post" action="/{category}/{type}/{title}">
+		<form id="add-recipe" method="post" action="/title">
 			<input type="text" name="Title" value="" required="true"/>
 			<input type="text" name="Ingredients" value=""required="true"/>
 			<input type="text" name="Prep Instructions" value=""required="true"/>

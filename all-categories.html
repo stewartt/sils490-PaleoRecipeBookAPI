@@ -1,0 +1,32 @@
+<!--representation: a list of all categories of recipes-->
+<html>
+	<div id="all-categories">
+		
+		<ol 
+			<li class="navigation">
+				<a href="/title" rel="list-titles">title page</a>
+			</li>
+			<li class="navigation">
+				<a href="/type" rel="list-types">type page</a>
+			</li>
+			<ul class="all">
+				<li>
+					<span class "category-text">Category1</span>
+						<a rel="type" href="/categorysearch?category=Category1" title="types for Category1">title</a>
+				</li>
+				...
+				<li>
+					<span class "category-text">CategoryN</span>
+						<a rel="type" href="/categorysearch?category=CategoryN" title="types for CategoryN">title</a>
+				</li>
+			</ul>
+		</ol>
+		
+		<!--get all recipe categories-->
+		<form name="all-recipe-categories" method="get" action="/category" class="all-categories">
+			<input type="text" name="search" value="category" required="true"/>
+			<input type="submit" value="Send"/>
+		</form>
+
+	</div>
+</html>

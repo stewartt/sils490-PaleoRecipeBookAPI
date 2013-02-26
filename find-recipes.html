@@ -1,6 +1,44 @@
-<!--query a title-->
+<!--representation: a list of all recipe titles-->
 <html>
-<form id="search-title" method="get" action"/title" class="recipe-search">
-<input type="text" name="search" value="" required="true"/>
-<input type="submit" value="Send"/>
-</form>
+	<div id="find-recipes">
+		
+		<ol>
+			<li class="navigation">
+				<a href="/category" rel="category-page">category page</a>
+			</li>
+			<li class="navigation">
+				<a href="/type" rel="type-page">type page</a>
+			</li>
+			<li class="navigation">
+				<a href="/title" rel="title-page">title page</a>
+			</li>
+			<ul class="all">
+				<li>
+					<span class="recipe-text">Recipe1</span>
+						<a rel="category" href="/category1/type1/title1" title="category of Recipe1">category1</a>
+						<a rel="type" href="/category1/type1/title1" title="type of Recipe1">type1</a>
+						<a rel="title" href="/category1/type1/title1" title="title of Recipe1">title1</a>
+				</li>
+				...
+				<li>
+					<span class="recipe-text">RecipeN</span>
+						<a rel="category" href="/categoryN/typeN/titleN" title="category of RecipeN">categoryN</a>
+						<a rel="type" href="/categoryN/typeN/titleN" title="type of RecipeN">typeN</a>
+						<a rel="title" href="/categoryN/typeN/titleN" title="title of RecipeN">titleN</a>
+				</li>
+			</ul>
+		</ol>
+		
+		<!--query a title; get a single recipe-->
+		<form id="search-title" method="get" action="/{category}/{type}/{title}" class="recipe-search">
+			<input type="text" name="search-title" value="title" required="true"/>
+			<input type="text" name="search-categor" value="category" required="false"/>
+			<input type="text" name="search-typ" value="type" required="false"/>
+			<input type="submit"/>
+		</form>
+		
+
+	</div>
+</html>
+		
+		
