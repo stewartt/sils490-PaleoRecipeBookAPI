@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
         <title>Paleo Data: <%=item.main_ingredient%></title>
         <link rel="stylesheet" href="/style.css">
     </head>
-    <body>
+    <body vocab="http://schema.org/" typeof="recipe">
+    <div id="one-ingredient">
         <a href="/ingredient/<%=item._id%>">
             <h1>One Ingredient at a Time:</h1>
-        </a>
+        </a>   
         <dl>
+        <span property="ingredient" typeof="recipe">
             <dt>Main Ingredient</dt>
-                <dd><%=item.main_ingredient%></dd>
+                <dd rel="one-ingredient" title="name-ingredient" ><%=item.main_ingredient%></dd>
+        </span>
+        <span property="name" typeof="recipe">
             <dt>Recipes</dt>
                 <dd>
                     <% if (same_items.length > 0) { %>
-                        <ul>
+                        <ul class="list-recipes">
                             <% same_items.forEach(function(same_item) { %>
                                 <% if (same_item.main_ingredient == item.main_ingredient) { %>
-                                    <li>
+                                    <li rel="recipe-name" title="title">
                                         <a href="/recipe/<%=same_item.id%>">
                                             <%=same_item.recipe%>
                                         </a>
@@ -31,26 +36,27 @@
                         No main ingredients have been added to this recipe.
                     <% } %>
                 </dd>
-        </dl>  
-
+        </span>
+            </dl>  
+        </div>
         <div>
             <table border ="1">
                 <tr>
                     <td>
                         <h4>Navigate to:</h4>
                     </td>
-                    <td>
-                        <a href="/">
+                    <td class="navigation">
+                        <a href="/" rel="home-page">
                             <h4>Paleo Data Home</h4>
                          </a>
                     </td>
-                    <td>
+                    <td class="navigation" rel="all-recipes">
                         <a href="/recipe/">
                             <h4>List of Recipes</h4>
                         </a>
                     </td>
-                    <td>
-                        <a href="/ingredient/">
+                    <td class="navigation">
+                        <a href="/ingredient/" rel="all-ingredients">
                             <h4>List of Ingredients</h4>
                         </a>
                     </td>
