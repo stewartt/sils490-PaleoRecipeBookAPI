@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
         <title>Paleo Data: Recipes</title>
         <link rel="stylesheet" href="/style.css">
     </head>
-    <body>
-        <a href="/recipe/">
-            <h1>Paleo Recipes:</h1
-        </a>
+    <body vocab="http://schema.org/" typeof="recipe">
+        <div id="recipes">
+            <a href="/recipe/" rel="all-recipes">
+                <h1>Paleo Recipes:</h1
+            </a>
+            <span property="name" typeof="recipe">
             <% if (items.length > 0) { %>                               <!--if there are items in the root db-->
-                <ul>                                                        <!--display a list each item by it's meal-->
+                <ul class="list-recipes">                                                        <!--display a list each item by it's meal-->
                     <% items.forEach(function(item) { %>    
-                        <li>
+                        <li rel="recipe-name" title="title">
                             <a href="/recipe/<%=item._id%>">                   <!--for each item in the db assign a url of /meal/item_id-->             
                                 <%=item.recipe%>                                  <!--display a meal-->
                             </a>    
@@ -21,7 +24,8 @@
             <% } else { %>                                              <!--else there are no items-->
                 <div>No meals have been added.</div>                      <!--Alert: no meals-->
             <% } %>
-        
+            </span>
+        </div>    
         <div class="control">                                       <!--This is a form to add a new meal-->
            <h2>Add or update a Paleo Recipe</h2>
             <script>
@@ -32,7 +36,7 @@
                 } 
             </script>
             <form method="post" action="/recipe/"
-                onsubmit="return onFormSubmit(this);">
+                onsubmit="return onFormSubmit(this);" name="add-recipe">
                 <!-- The line above dynamically sets the PUT destination when the -->
                 <!-- form is submitted. -------------------------------------------->
                 <input type="hidden" name="_method" value="put">
@@ -93,13 +97,13 @@
                     <td>
                         <h4>Navigate to:</h4>
                     </td>
-                    <td>
-                        <a href="/">
+                    <td class="navigation">
+                        <a href="/" rel="home-page">
                             <h4>Paleo Data Home</h4>
                          </a>
                     </td>
-                    <td>
-                        <a href="/ingredient/">
+                    <td class="navigation">
+                        <a href="/ingredient/" rel="all-ingredients">
                             <h4>List of Ingredients</h4>
                         </a>
                     </td>
