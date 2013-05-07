@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
         <title>Paleo Data: <%=item.recipe%></title>
         <link rel="stylesheet" href="/style.css">
     </head>
-    <body>
-        <a href="/recipe/<%=item._id%>">
+    <body vocab="http://schema.org/" typeof="recipe">
+       <div id="one-recipe">
+        <a href="/recipe/<%=item._id%>" rel="recipe-name">
             <h1>One Recipe at a Time:</h1>
         </a>
-        
         <dl>
+        <span property="name" typeof="recipe">
             <dt>Recipe name</dt>
             <dd><%=item.recipe%></dd>
-      
+        </span>
+        <span property="ingredient" typeof="recipe">
             <dt>Main Ingredients</dt>
             <dd>
                 <% if (related_items.length > 0) { %>
-                    <ul>
+                    <ul class="list-ingredients">
                         <% related_items.forEach(function(related_item) { %>
                             <% if (related_item.id == item._id) { %>
-                                <li>
+                                <li rel="one-ingredient" title="name-ingredient">
                                     <a href="/ingredient/<%=related_item._id%>">
                                         <%=related_item.main_ingredient%>
                                     </a>
@@ -33,36 +36,41 @@
                     No main ingredients have been added to this recipe.
                 <% } %>
             </dd>
-      
+        <span property="ingredient" typeof="recipe">
             <% if (item.all_ingredients) { %>
                 <dt>All Ingredients</dt>
                     <dd><%=item.all_ingredients%></dd>
             <% } %>
-      
+        </span>
+        <span property="prepTime" typeof="duration">
             <% if (item.prep) { %>
                 <dt>Prep Instructions</dt>
                     <dd><%=item.prep%></dd>
             <% } %>
-      
+        </span>
+        <span property="recipeInstructions" typeof="duration">
             <% if (item.instructions) { %>
                 <dt>Cooking Instructions</dt>
                     <dd><%=item.instructions%></dd>
             <% } %>
-      
+        </span>
+        <span property="comment" typeof="userComment">
             <% if (item.authors_comments) { %>
                 <dt>Authors Comments</dt>
                     <dd><%=item.authors_comments%></dd>
             <% } %>
-            
+        </span>
+        <span property="comment" typeof="userComment">
             <% if (item.comments) { %>
                 <dt>Recent Comment</dt>
                     <dd><%=item.comments%></dd>
             <% } %>
+        </span>
         </dl>
-        
+        </div>
         <div class="control">
             <h2>Add a main ingredient</h2>
-            <form id="create-ingredient" method="post" action="/ingredient/">
+            <form id="create-ingredient" name="new-ingredient" method="post" action="/ingredient/">
                 <input 
                     type="hidden" 
                     name="item[id]" 
@@ -168,18 +176,18 @@
                     <td>
                         <h4>Navigate to:</h4>
                     </td>
-                    <td>
+                    <td class="navigation" rel="home-page">
                         <a href="/">
                             <h4>Paleo Data Home</h4>
                          </a>
                     </td>
-                    <td>
-                        <a href="/recipe/">
+                    <td class="navigation">
+                        <a href="/recipe/"  rel="all-recipes">
                             <h4>List of Recipes</h4>
                         </a>
                     </td>
-                    <td>
-                        <a href="/ingredient/">
+                    <td class="navigation">
+                        <a href="/ingredient/"  rel="all-ingredients">
                             <h4>List of Ingredients</h4>
                         </a>
                     </td>
