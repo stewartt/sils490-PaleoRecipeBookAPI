@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Paleo Data: <%=item.recipe%></title>
+        <link rel="stylesheet" href="/style.css">
+    </head>
+    <body>
+        <a href="/recipe/<%=item._id%>">
+            <h1>One Recipe at a Time:</h1>
+        </a>
+        
+        <dl>
+            <dt>Recipe name</dt>
+            <dd><%=item.recipe%></dd>
+      
+            <dt>Main Ingredients</dt>
+            <dd>
+                <% if (related_items.length > 0) { %>
+                    <ul>
+                        <% related_items.forEach(function(related_item) { %>
+                            <% if (related_item.id == item._id) { %>
+                                <li>
+                                    <a href="/ingredient/<%=related_item._id%>">
+                                        <%=related_item.main_ingredient%>
+                                    </a>
+                                </li>
+                            <% } else { %>
+                            
+                            <% } %>
+                        <% }); %>
+                    </ul>
+                <% } else { %>
+                    No main ingredients have been added to this recipe.
+                <% } %>
+            </dd>
+      
+            <% if (item.all_ingredients) { %>
+                <dt>All Ingredients</dt>
+                    <dd><%=item.all_ingredients%></dd>
+            <% } %>
+      
+            <% if (item.prep) { %>
+                <dt>Prep Instructions</dt>
+                    <dd><%=item.prep%></dd>
+            <% } %>
+      
+            <% if (item.instructions) { %>
+                <dt>Cooking Instructions</dt>
+                    <dd><%=item.instructions%></dd>
+            <% } %>
+      
+            <% if (item.authors_comments) { %>
+                <dt>Authors Comments</dt>
+                    <dd><%=item.authors_comments%></dd>
+            <% } %>
+            
+            <% if (item.comments) { %>
+                <dt>Recent Comment</dt>
+                    <dd><%=item.comments%></dd>
+            <% } %>
+        </dl>
+        
+        <div class="control">
+            <h2>Add a main ingredient</h2>
+            <form id="create-ingredient" method="post" action="/ingredient/">
+                <input 
+                    type="hidden" 
+                    name="item[id]" 
+                    value="<%=item._id%>"
+                >
+                <input 
+                    type="hidden" 
+                    name="item[recipe]" 
+                    value="<%=item.recipe%>"
+                >
+                <!-- The line above links the ingredient to be created to this recipe. -->
+                <label>Ingredient: 
+                    <input 
+                        name="item[main_ingredient]" 
+                        type="text" 
+                        required placeholder="Chicken"
+                    >
+                </label>
+                <button>Add</button>
+            </form>
+        </div>
+        
+        <div class="control">                                       <!--This is a form to add a new meal-->
+           <h2>Update/Add to Recipe</h2>
+            <script>
+                function onFormSubmit(form) {
+                    form.action = form.action + form.elements['item[id]'].value;
+                    console.log(form.action);
+                    return true;
+                } 
+            </script>
+            <form method="post" action="/recipe/"
+                onsubmit="return onFormSubmit(this);">
+                <!-- The line above dynamically sets the PUT destination when the -->
+                <!-- form is submitted. -------------------------------------------->
+                <input type="hidden" name="_method" value="put">
+                <!-- The line above tells the server to treat this as a PUT request. -->
+                <input 
+                        name="item[id]"                             
+                        type="hidden" 
+                        pattern="[a-z]+" 
+                        required 
+                        value=<%=item._id%>
+                    >
+                <input 
+                        name="item[recipe]"                             
+                        type="hidden" 
+                        required 
+                        value=<%=item.recipe%>
+                    >
+                <%if(!item.all_ingredients){ %><label>All Ingredients:<% } %>
+                    <input 
+                        name="item[all_ingredients]"
+                        <%if(item.all_ingredients){ %>
+                            type="hidden"
+                        <% } else { %>
+                            type = "text"
+                        <% } %> 
+                        value=<%=item.all_ingredients%>
+                    >
+                <%if(!item.all_ingredients){ %></label><% } %>
+                
+                <%if(!item.prep){ %><label>Prep Instructions:<% } %>
+                    <input 
+                        name="item[prep]" 
+                        <%if(item.prep){ %>
+                            type="hidden"
+                        <% } else { %>
+                            type = "text"
+                        <% } %>
+                        placeholder="chop veggies"
+                    >
+                <%if(!item.prep){ %></label><% } %>
+                <%if(!item.instructions){ %><label>Cooking Instructions:<% } %>
+                    <input 
+                        name="item[instructions]" 
+                        <%if(item.instructions){ %>
+                            type="hidden"
+                        <% } else { %>
+                            type = "text"
+                        <% } %> 
+                        placeholder="stir-fry"
+                    >
+                <%if(!item.instructions){ %></label><% } %>
+                <input 
+                        name="item[authors_comments]" 
+                        type="hidden"  
+                    >
+                <label>Add Comments:
+                    <input 
+                        name="item[comments]" 
+                        type="return whatType(item.comments)"  
+                        placeholder="your comments here"
+                    >
+                </label>
+                <button>Update Recipe</button>
+            </form>
+        </div>
+        
+        <div>
+            <table border ="1">
+                <tr>
+                    <td>
+                        <h4>Navigate to:</h4>
+                    </td>
+                    <td>
+                        <a href="/">
+                            <h4>Paleo Data Home</h4>
+                         </a>
+                    </td>
+                    <td>
+                        <a href="/recipe/">
+                            <h4>List of Recipes</h4>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/ingredient/">
+                            <h4>List of Ingredients</h4>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        <div>
+        
+    </body>
+</html>
