@@ -1,9 +1,13 @@
 sils490-PaleoRecipeBookAPI
 ==========================
 **
-Homework Assignment 4: Designing a Hypermedia Type: Paleo Recipe Book**
+Homework Assignment 5: Designing a Hypermedia Type: Paleo Recipe Book; Final**
 
 ----------
+The following html documents are used to build this project:
+
+list-recipes.ejs, list-ingredients.ejs, one-recipe.ejs, one-ingredient.ejs, index.ejs, app.js
+
 This information (web) service handles Paleo Recipes and Paleo Ingredients ,that are by definition “Paleo”, as its two resources. These recipes do not contain grains, dairy, processed sugar/preservatives, corn or corn byproducts, legumes, or white/starchy potatoes, and only contain fruits, vegetables, meats, and natural sugars. 
 
 Each recipe can be divided into data units made up of the following sections: Recipe Title, Ingredients, Main Ingredient, Prep Instruction, Cooking Instruction, Author Comment, and Comments. These are the components that the service will require information about for each resource.
