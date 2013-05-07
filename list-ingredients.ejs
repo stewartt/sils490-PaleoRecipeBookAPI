@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Paleo Data: Ingredients</title>
+        <link rel="stylesheet" href="/style.css">
+    </head>
+    <body>
+        
+        <a href="/ingredient/">
+            <h1>Paleo Ingredients:</h1>
+        </a>
+        
+        <% if (items.length > 0) { %>
+            <ul>
+                <!--need to remove duplicates from the ingredients resources for display; use an array to sort-->
+                <% var list_ingr = new Array(); %>
+                <!--a var to mark index loc in the array-->
+                <% var count = 0; %>
+                 <!--for each item returned from the database we will store them in the array and list if no duplicates are found-->
+                <% items.forEach(function(item) { %>
+                    <!--if this is the first item, print it-->
+                    <% if (count == 0) { %>
+                        <% list_ingr[count] = item.main_ingredient; %>
+                        <li>
+                            <a href="/ingredient/<%=item._id%>">
+                                <%=list_ingr[count]%>
+                            </a>
+                        </li>
+                     <!--else look for duplicates-->
+                    <% } else { %>
+                        <% var dup = 0; %>
+                        <% for( var i=0; i<list_ingr.length; i++){ %>
+                            <% if(list_ingr[i] == item.main_ingredient){ %>
+                                <% dup = 1; %>
+                                <% break; %>
+                            <% } %>
+                        <% } %>
+                         <!--if no duplicates were found, print it-->
+                        <% if(dup == 0){ %>
+                            <% list_ingr[count] = item.main_ingredient; %>
+                            <li>
+                                <a href="/ingredient/<%=item._id%>">
+                                    <%=list_ingr[count]%>
+                                </a>
+                            </li>
+                        <% } %>
+                    <% } %>
+                    <% count = count + 1; %> 
+                <% }); %>
+            </ul>
+        <% } else { %>
+            <div>No paleo ingredients found.</div>
+        <% } %>
+        
+        <div>
+            <table border ="1">
+                <tr>
+                    <td>
+                        <h4>Navigate to:</h4>
+                    </td>
+                    <td>
+                        <a href="/">
+                            <h4>Paleo Data Home</h4>
+                         </a>
+                    </td>
+                    <td>
+                        <a href="/recipe/">
+                            <h4>List of Recipes</h4>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        <div>
+
+    </body>
+</html>
