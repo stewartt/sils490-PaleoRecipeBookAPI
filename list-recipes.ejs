@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Paleo Data: Recipes</title>
+        <link rel="stylesheet" href="/style.css">
+    </head>
+    <body>
+        <a href="/recipe/">
+            <h1>Paleo Recipes:</h1
+        </a>
+            <% if (items.length > 0) { %>                               <!--if there are items in the root db-->
+                <ul>                                                        <!--display a list each item by it's meal-->
+                    <% items.forEach(function(item) { %>    
+                        <li>
+                            <a href="/recipe/<%=item._id%>">                   <!--for each item in the db assign a url of /meal/item_id-->             
+                                <%=item.recipe%>                                  <!--display a meal-->
+                            </a>    
+                        </li>
+                    <% }); %>
+                </ul>
+            <% } else { %>                                              <!--else there are no items-->
+                <div>No meals have been added.</div>                      <!--Alert: no meals-->
+            <% } %>
+        
+        <div class="control">                                       <!--This is a form to add a new meal-->
+           <h2>Add or update a Paleo Recipe</h2>
+            <script>
+                function onFormSubmit(form) {
+                    form.action = form.action + form.elements['item[id]'].value;
+                    console.log(form.action);
+                    return true;
+                } 
+            </script>
+            <form method="post" action="/recipe/"
+                onsubmit="return onFormSubmit(this);">
+                <!-- The line above dynamically sets the PUT destination when the -->
+                <!-- form is submitted. -------------------------------------------->
+                <input type="hidden" name="_method" value="put">
+                <!-- The line above tells the server to treat this as a PUT request. -->
+                <label> Recipe ID <br>        
+                    (lowercase letters only, no spaces):
+                    <input 
+                        name="item[id]"                             
+                        type="text" 
+                        pattern="[a-z]+" 
+                        required 
+                        placeholder="recipe name"
+                    >
+                </label>
+                <label> Recipe Title <br>        
+                    <input 
+                        name="item[recipe]"                             
+                        type="text" 
+                        required
+                        placeholder="Recipe Name"
+                    >
+                </label>
+                <label>All ingredients:
+                    <input 
+                        name="item[all_ingredients]" 
+                        type="text"  
+                        placeholder="chicken & veggies"
+                    >
+                </label>
+                <label>Prep Instructions:
+                    <input 
+                        name="item[prep]" 
+                        type="text"  
+                        placeholder="chop veggies"
+                    >
+                </label>
+                <label>Cooking Instructions:
+                    <input 
+                        name="item[instructions]" 
+                        type="text"  
+                        placeholder="stir-fry"
+                    >
+                </label>
+                 <label>Authors Comments:
+                    <input 
+                        name="item[authors_comments]" 
+                        type="text"  
+                        placeholder="yum!"
+                    >
+                </label>
+                <button>Add</button>
+            </form>
+        </div>
+        
+        <div>
+            <table border ="1">
+                <tr>
+                    <td>
+                        <h4>Navigate to:</h4>
+                    </td>
+                    <td>
+                        <a href="/">
+                            <h4>Paleo Data Home</h4>
+                         </a>
+                    </td>
+                    <td>
+                        <a href="/ingredient/">
+                            <h4>List of Ingredients</h4>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        <div>
+    </body>
+</html>
