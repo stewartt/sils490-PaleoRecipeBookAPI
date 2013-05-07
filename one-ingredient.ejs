@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Paleo Data: <%=item.main_ingredient%></title>
+        <link rel="stylesheet" href="/style.css">
+    </head>
+    <body>
+        <a href="/ingredient/<%=item._id%>">
+            <h1>One Ingredient at a Time:</h1>
+        </a>
+        <dl>
+            <dt>Main Ingredient</dt>
+                <dd><%=item.main_ingredient%></dd>
+            <dt>Recipes</dt>
+                <dd>
+                    <% if (same_items.length > 0) { %>
+                        <ul>
+                            <% same_items.forEach(function(same_item) { %>
+                                <% if (same_item.main_ingredient == item.main_ingredient) { %>
+                                    <li>
+                                        <a href="/recipe/<%=same_item.id%>">
+                                            <%=same_item.recipe%>
+                                        </a>
+                                    </li>                            
+                                <% } else { %>
+                            
+                                <% } %>
+                            <% }); %>
+                        </ul>
+                    <% } else { %>
+                        No main ingredients have been added to this recipe.
+                    <% } %>
+                </dd>
+        </dl>  
+
+        <div>
+            <table border ="1">
+                <tr>
+                    <td>
+                        <h4>Navigate to:</h4>
+                    </td>
+                    <td>
+                        <a href="/">
+                            <h4>Paleo Data Home</h4>
+                         </a>
+                    </td>
+                    <td>
+                        <a href="/recipe/">
+                            <h4>List of Recipes</h4>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/ingredient/">
+                            <h4>List of Ingredients</h4>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        <div>
+        
+    </body>
+</html>
