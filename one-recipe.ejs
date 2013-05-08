@@ -5,24 +5,24 @@
         <title>Paleo Data: <%=item.recipe%></title>
         <link rel="stylesheet" href="/style.css">
     </head>
-    <body vocab="http://schema.org/" typeof="recipe">
+    <body itemscope itemtype="http://www.schema.org/Recipe">
        <div id="one-recipe">
         <a href="/recipe/<%=item._id%>" rel="recipe-name">
             <h1>One Recipe at a Time:</h1>
         </a>
         <dl>
-        <span property="name" typeof="recipe">
+        <span>
             <dt>Recipe name</dt>
-            <dd><%=item.recipe%></dd>
+            <dd itemprop"name"><%=item.recipe%></dd>
         </span>
-        <span property="ingredient" typeof="recipe">
+        <span>
             <dt>Main Ingredients</dt>
             <dd>
                 <% if (related_items.length > 0) { %>
                     <ul class="list-ingredients">
                         <% related_items.forEach(function(related_item) { %>
                             <% if (related_item.id == item._id) { %>
-                                <li rel="one-ingredient" title="name-ingredient">
+                                <li itemprop"ingredients" rel="one-ingredient" title="name-ingredient">
                                     <a href="/ingredient/<%=related_item._id%>">
                                         <%=related_item.main_ingredient%>
                                     </a>
@@ -36,34 +36,34 @@
                     No main ingredients have been added to this recipe.
                 <% } %>
             </dd>
-        <span property="ingredient" typeof="recipe">
+        <span>
             <% if (item.all_ingredients) { %>
                 <dt>All Ingredients</dt>
-                    <dd><%=item.all_ingredients%></dd>
+                    <dd itemprop="ingredients"><%=item.all_ingredients%></dd>
             <% } %>
         </span>
-        <span property="prepTime" typeof="duration">
+        <span>
             <% if (item.prep) { %>
                 <dt>Prep Instructions</dt>
-                    <dd><%=item.prep%></dd>
+                    <dd itemprop="prepTime"><%=item.prep%></dd>
             <% } %>
         </span>
-        <span property="recipeInstructions" typeof="duration">
+        <span>
             <% if (item.instructions) { %>
                 <dt>Cooking Instructions</dt>
-                    <dd><%=item.instructions%></dd>
+                    <dd itemprop="recipeInstructions"><%=item.instructions%></dd>
             <% } %>
         </span>
-        <span property="comment" typeof="authorComment">
+        <span>
             <% if (item.authors_comments) { %>
                 <dt>Authors Comments</dt>
-                    <dd><%=item.authors_comments%></dd>
+                    <dd itemprop="comment"><%=item.authors_comments%></dd>
             <% } %>
         </span>
-        <span property="comment" typeof="userComment">
+        <span>
             <% if (item.comments) { %>
                 <dt>Recent Comment</dt>
-                    <dd><%=item.comments%></dd>
+                    <dd itemprop="comment"><%=item.comments%></dd>
             <% } %>
         </span>
         </dl>
