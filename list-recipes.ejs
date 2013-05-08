@@ -5,16 +5,16 @@
         <title>Paleo Data: Recipes</title>
         <link rel="stylesheet" href="/style.css">
     </head>
-    <body vocab="http://schema.org/" typeof="recipe">
+    <body itemscope itemtype="http://www.schema.org/Recipe">
         <div id="recipes">
             <a href="/recipe/" rel="all-recipes">
                 <h1>Paleo Recipes:</h1
             </a>
-            <span property="name" typeof="recipe">
+            <span>
             <% if (items.length > 0) { %>                               <!--if there are items in the root db-->
                 <ul class="list-recipes">                                                        <!--display a list each item by it's meal-->
                     <% items.forEach(function(item) { %>    
-                        <li rel="recipe-name" title="title">
+                        <li itemprop="name" rel="recipe-name" title="title">
                             <a href="/recipe/<%=item._id%>">                   <!--for each item in the db assign a url of /meal/item_id-->             
                                 <%=item.recipe%>                                  <!--display a meal-->
                             </a>    
