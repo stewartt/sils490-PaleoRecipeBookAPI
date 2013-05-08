@@ -54,7 +54,7 @@
                     <dd><%=item.instructions%></dd>
             <% } %>
         </span>
-        <span property="comment" typeof="userComment">
+        <span property="comment" typeof="authorComment">
             <% if (item.authors_comments) { %>
                 <dt>Authors Comments</dt>
                     <dd><%=item.authors_comments%></dd>
@@ -126,10 +126,11 @@
                         name="item[all_ingredients]"
                         <%if(item.all_ingredients){ %>
                             type="hidden"
+                            value=<%=item.all_ingredients%>
                         <% } else { %>
                             type = "text"
+                            placeholder="chicken & veggies"
                         <% } %> 
-                        value=<%=item.all_ingredients%>
                     >
                 <%if(!item.all_ingredients){ %></label><% } %>
                 
@@ -138,10 +139,11 @@
                         name="item[prep]" 
                         <%if(item.prep){ %>
                             type="hidden"
+                            value=<%=item.prep%>
                         <% } else { %>
                             type = "text"
+                            placeholder="chop veggies"
                         <% } %>
-                        placeholder="chop veggies"
                     >
                 <%if(!item.prep){ %></label><% } %>
                 <%if(!item.instructions){ %><label>Cooking Instructions:<% } %>
@@ -149,20 +151,23 @@
                         name="item[instructions]" 
                         <%if(item.instructions){ %>
                             type="hidden"
+                            value=<%=item.instructions%>
                         <% } else { %>
                             type = "text"
+                            placeholder="stir-fry"
                         <% } %> 
-                        placeholder="stir-fry"
+                        
                     >
                 <%if(!item.instructions){ %></label><% } %>
                 <input 
                         name="item[authors_comments]" 
-                        type="hidden"  
+                        type="hidden"
+                        value=<%=item.authors_comments%>
                     >
                 <label>Add Comments:
                     <input 
                         name="item[comments]" 
-                        type="return whatType(item.comments)"  
+                        type="text"  
                         placeholder="your comments here"
                     >
                 </label>
