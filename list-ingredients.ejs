@@ -5,12 +5,12 @@
         <title>Paleo Data: Ingredients</title>
         <link rel="stylesheet" href="/style.css">
     </head>
-    <body vocab="http://schema.org/" typeof="recipe">
+    <body>
         <div id="ingredients">
             <a href="/ingredient/" rel="all-igredients">
                 <h1>Paleo Ingredients:</h1>
             </a>
-            <span property="ingredient" typeof="recipe">
+            <span itemscope itemtype="http://www.schema.org/Recipe">
             <% if (items.length > 0) { %>
                 <ul>
                     <!--need to remove duplicates from the ingredients resources for display; use an array to sort-->
@@ -22,7 +22,7 @@
                         <!--if this is the first item, print it-->
                         <% if (count == 0) { %>
                             <% list_ingr[count] = item.main_ingredient; %>
-                            <li rel="one-ingredient" title="name-ingredient">
+                            <li itemprop="ingredients" rel="one-ingredient" title="name-ingredient">
                                 <a href="/ingredient/<%=item._id%>">
                                     <%=list_ingr[count]%>
                                 </a>
@@ -39,7 +39,7 @@
                             <!--if no duplicates were found, print it-->
                             <% if(dup == 0){ %>
                                 <% list_ingr[count] = item.main_ingredient; %>
-                                <li rel="one-ingredient" title="name-ingredient">
+                                <li itemprop="ingredients"rel="one-ingredient" title="name-ingredient">
                                     <a href="/ingredient/<%=item._id%>">
                                         <%=list_ingr[count]%>
                                     </a>
