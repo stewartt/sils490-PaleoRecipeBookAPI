@@ -69,9 +69,8 @@ When used with ul tag signifies a list of recipes that can be identified by titl
 *recipe-text*:
 When used with a span tag defines a block of text data that is about a recipe
 
-*all*:
-When used with a form tag signifies that this method will search all resources within the representation
-
+*control*:
+When used with a form tag signifies that this is a method to control the flow of data
 
 *one-recipe*:
 When used with ul tag signifies a single recipe
